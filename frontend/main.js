@@ -18,15 +18,20 @@ var mymap = L.map('map').setView([50.7205, 7.0800], 10);
 L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', {
 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 	maxZoom: 18,
-	id: 'mapbox.streets'
+	id: 'wikimedia.streets'
 }).addTo(mymap);
 
+// L.tileLayer('http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.png', {
+// 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+// 	maxZoom: 18,
+// 	id: 'stamen'
+// }).addTo(mymap);
 
-Object.keys(markers).filter(u=>markers[u].coords&&markers[u].coords[0]&&markers[u].coords[1])
-.forEach(url=>{
-    L.marker(markers[url] .coords).on('click', function() {
-        window.location = url;
+
+markers.filter(u=>u.coords&&u.coords[0]&&u.coords[1])
+.forEach(marker=>{
+    L.marker(marker.coords).on('click', function() {
+        window.location = marker.link;
     }).addTo(mymap);
 });
 
-console.log(Object.keys(markers).length)

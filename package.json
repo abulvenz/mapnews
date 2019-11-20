@@ -22,6 +22,7 @@
     "parcel-bundler": "^1.12.3"
   },
   "dependencies": {
-    "leaflet": "^1.5.1"
+    "leaflet": "^1.5.1",
+    "overlapping-marker-spiderfier-leaflet": "^0.2.7"
   }
 }
